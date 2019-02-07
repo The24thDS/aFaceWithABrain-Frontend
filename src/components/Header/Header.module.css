@@ -1,0 +1,33 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100px;
+    position: relative;
+    --alignment: 50px;
+}
+.header:first-child{
+    padding-left: var(--alignment);
+}
+.header p{
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    background: var(--main-blue);
+    margin-right: var(--alignment);
+    border-radius: 10px;
+    color: var(--lightest-green);
+    display: inline-block
+}
+.header::after{
+    content: '';
+    position: absolute;
+    background-image: linear-gradient(45deg, #29bae4 0%, #ee76ad 100%);
+    top: -20px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    transform: skewY(-0.75deg);
+    border-bottom: 2px solid var(--lightest-green)
+}

@@ -1,0 +1,16 @@
+.box{
+    position: absolute;
+    box-shadow: 0 0 0 3px var(--main-blue)
+}
+
+.container{
+    position: relative;
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.image{
+    width: 500px;
+    height: auto;
+}
