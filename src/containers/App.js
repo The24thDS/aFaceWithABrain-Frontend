@@ -68,11 +68,11 @@ class App extends Component {
     fetch("http://localhost:3030/clarifai", {
       method: 'POST',
       body: JSON.stringify({
-          image: this.state.inputValue
-        }),
+        image: this.state.inputValue
+      }),
       headers:{
         'Content-Type': 'application/json'
-        }
+      }
     })
     .then( response => {
       if(response.status===200)
