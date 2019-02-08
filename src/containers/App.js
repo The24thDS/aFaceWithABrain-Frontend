@@ -4,8 +4,8 @@ import Rank from '../components/Rank/Rank';
 import ImageForm from '../components/ImageForm/ImageForm';
 import Image from '../components/Image/Image';
 import Background from '../components/Background/Background';
-import SignIn from '../components/Forms/SignIn'
-import Register from '../components/Forms/Register'
+import SignIn from './Forms/SignIn'
+import Register from './Forms/Register'
 import './App.css';
 
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
       inputValue: '',
       imageUrl: '',
       boxes: [],
-      signedIn: true,
+      signedIn: false,
       path: '/signin'
     }
   }
@@ -59,7 +59,8 @@ class App extends Component {
       inputValue: '',
       imageUrl: '',
       boxes: [],
-      signedIn: true
+      signedIn: false,
+      path: '/signin'
     })
   }
 

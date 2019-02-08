@@ -1,0 +1,49 @@
+.label{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 20px;
+    padding: 10px 0;
+    text-indent: 10px;
+    position: relative;
+}
+.inputContainer{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.input{
+    position: relative;
+    font-size: 18px;
+    border: 2px solid var(--main-blue);
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 5px;
+    width: 90%;
+    margin: 5px 0;
+    transition: background-color 1s, color 1s
+}
+.input:focus{
+    background-color: var(--main-blue);
+    color: white;
+    transition: background-color 1s, color 1s
+}
+.submit{
+    border: none;
+    cursor: pointer;
+    width: 25%;
+    height: 40px;
+    border-radius: 5px;
+    background-color: var(--header-left);
+    font-size: 20px;
+    align-self: center;
+    transition: color 1s
+}
+.submit:hover{
+    color: white;
+    transition: color 1s
+}
+em {
+    font-size: 14px;
+    color: var(--main-blue);
+}
