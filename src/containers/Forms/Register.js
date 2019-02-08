@@ -95,15 +95,18 @@ class Register extends React.Component{
             <form className={styles.form}>
                 <Input 
                 verifyInput={this.verify} onInputClick={this.onClick} 
+                status={true}
                 infos={["at least 5 characters"]} 
                 name="username" type="text" text="Username" 
                 />
                 <Input 
                 verifyInput={this.verify} onInputClick={this.onClick} 
+                status={true}
                 name="email" type="text" text="Email" 
                 />
                 <Input 
                 verifyInput={this.verify} onInputClick={this.onClick} 
+                status={true}
                 infos={["at least 8 characters including","at least one lowercase, uppercase, number and symbol"]}
                 name="password" type="password" text="Password" 
                 />

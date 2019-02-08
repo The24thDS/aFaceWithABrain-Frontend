@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './Input.module.css';
 
-const Input = ({ name, type, text, infos, onInputClick, onInputChange, verifyInput}) => {
+const Input = ({ name, type, text, infos, status, onInputClick, onInputChange, verifyInput}) => {
     if(type!=="submit"){
         return (
-            <label className={styles.label}>{text}
+            <span className={styles.label}>{text}
                 {
                     infos?infos.map(info => <em>{`${info}`}</em>):''
                 }
@@ -15,9 +15,9 @@ const Input = ({ name, type, text, infos, onInputClick, onInputChange, verifyInp
                         className={styles.input} 
                         name={name} type={type} 
                     />
-                    <div style={{width: '25px', height: '25px', position: 'relative'}}></div>
+                    {status?<div style={{width: '25px', height: '25px', position: 'relative'}}></div>:''}
                 </div>
-            </label>
+            </span>
         )
     } else {
         return (

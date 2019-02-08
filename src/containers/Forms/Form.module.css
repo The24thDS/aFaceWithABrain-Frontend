@@ -12,6 +12,12 @@
     /* border: 3px solid green; */
     box-shadow: 0 0 15px white
 }
+form.login{
+    width: 300px;
+}
+.login input:not([type="submit"]){
+    width: 100%;
+}
 .form .invalid{
     border: 2px solid red
 }
