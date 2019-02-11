@@ -22,7 +22,7 @@ class Register extends React.Component{
         })
     }
 
-    validate= (event, regex) => {
+    validate = (event, regex) => {
 		const data = event.target.value
         if(regex.test(data))
         {
@@ -41,7 +41,8 @@ class Register extends React.Component{
 
     onSubmit = (event) => {
         event.preventDefault()
-        if(!this.validUsername(this.state.username) || !this.validEmail(this.state.email) || !this.validPassword(this.state.password))
+        const {username, email, password} = this.state
+        if(!username.length || !email.length || !password.length)
             return false;
         fetch('https://afacewithabrain.herokuapp.com/register', {
             method: 'POST',
@@ -53,9 +54,9 @@ class Register extends React.Component{
         .then(res => res.json())
         .then(data => {
             if(data.status === "Success")
-                this.props.changePath("/signin")
+                this.props.updateGlobalState({path: '/signin'})
         })
-        .catch(err => console.log("Error: AI is taking over the world 🤖"))
+        .catch(err => console.log(err))
     }
 
     render(){
