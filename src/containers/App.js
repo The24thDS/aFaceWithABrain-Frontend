@@ -50,7 +50,7 @@ class App extends Component {
               : path==='/signin'?
                   <SignIn updateGlobalState={this.updateGlobalState}/>
                 :
-                  <Register/>
+                  <Register updateGlobalState={this.updateGlobalState}/>
           }
         </section>
         <Background/>
