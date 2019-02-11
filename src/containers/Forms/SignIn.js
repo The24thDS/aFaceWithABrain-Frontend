@@ -66,13 +66,13 @@ class SignIn extends React.Component{
             const response = await fetch('http://localhost:3030/signin', request)
             const info = await response.json()
             if(info.status === "Success")
-                this.updateGlobalState({
+                this.props.updateGlobalState({
                     signedIn: true,
                     path: '/image',
                     email: this.state.email,
                     username: info.profile.username
                 })
-        } catch(err) {console.log("Error: AI is taking over the world 🤖")}
+        } catch(err) {console.log(err)}
     }
 
     render(){
