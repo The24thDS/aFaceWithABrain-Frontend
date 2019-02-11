@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   updateGlobalState = state => {
-    this.setState(state, ()=>{console.log(this.state)})
+    this.setState(state)
   }
 
   changePage = (path) => {

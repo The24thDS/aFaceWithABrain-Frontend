@@ -43,7 +43,7 @@ class Register extends React.Component{
         event.preventDefault()
         if(!this.validUsername(this.state.username) || !this.validEmail(this.state.email) || !this.validPassword(this.state.password))
             return false;
-        fetch('http://localhost:3030/register', {
+        fetch('https://afacewithabrain.herokuapp.com/register', {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json'

@@ -19,7 +19,7 @@ class Image extends React.Component {
     }
 
     calculateFaceLocations = (data) => {
-        let boxes = data.regions.map(region => {
+        let boxes = data.map(region => {
             return {
                 top: region.region_info.bounding_box.top_row * 100 + '%',
                 left: region.region_info.bounding_box.left_col * 100 + '%',
@@ -43,18 +43,22 @@ class Image extends React.Component {
         const request = {
             method: 'POST',
             body: JSON.stringify({
-                image: this.state.inputValue
+                image: this.state.inputValue,
+                email: this.props.email
             }),
             headers: {
                 'Content-Type': 'application/json'
             }
         }
         try{
-            const response = await fetch("http://localhost:3030/clarifai", request)
+            const response = await fetch("https://afacewithabrain.herokuapp.com/clarifai", request)
             if(response.status===200)
                 {
-                    const info = await response.json()
-                    this.displayFaces(this.calculateFaceLocations(info))
+                    const {entries, regions} = await response.json()
+                    this.setState({
+                        entries
+                    })
+                    this.displayFaces(this.calculateFaceLocations(regions))
                 }
             else
                 throw response.statusText
@@ -76,7 +80,7 @@ class Image extends React.Component {
                 email: this.props.email
             })
         }
-        const response = await fetch('http://localhost:3030/entries', request)
+        const response = await fetch('https://afacewithabrain.herokuapp.com/entries', request)
         const info = await response.json()
         const {entries} = info.response
         this.setState({

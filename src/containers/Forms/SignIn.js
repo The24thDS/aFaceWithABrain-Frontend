@@ -47,7 +47,7 @@ class SignIn extends React.Component{
             body: JSON.stringify(this.state)
         }
         try {
-            const response = await fetch('http://localhost:3030/signin', request)
+            const response = await fetch('https://afacewithabrain.herokuapp.com/signin', request)
             const info = await response.json()
             if(info.status === "Success")
                 this.props.updateGlobalState({
