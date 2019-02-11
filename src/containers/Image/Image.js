@@ -7,9 +7,12 @@ class Image extends React.Component {
     constructor() {
         super()
         this.state = {
+            username: '',
+            email: '',
             inputValue: '',
             imageUrl: '',
-            boxes: []
+            boxes: [],
+            entries: ''
         }
     }
 
@@ -37,9 +40,9 @@ class Image extends React.Component {
         })
     }
 
-    onSubmit = () => {
+    onSubmit = async() => {
         this.setState({ imageUrl: '', boxes: [] });
-        fetch("http://localhost:3030/clarifai", {
+        const request = {
             method: 'POST',
             body: JSON.stringify({
                 image: this.state.inputValue
@@ -47,17 +50,22 @@ class Image extends React.Component {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
-        .then(response => {
-            if (response.status === 200)
-                return response.json()
-            else throw response.statusText
-        })
-        .then(data => this.displayFaces(this.calculateFaceLocations(data)))
-        .catch(err => this.setState({
-            inputValue: '',
-            imageUrl: err
-        }));
+        }
+        try{
+            const response = await fetch("http://localhost:3030/clarifai", request)
+            if(response.status===200)
+                {
+                    const info = await response.json()
+                    this.displayFaces(this.calculateFaceLocations(info))
+                }
+            else
+                throw response.statusText
+        } catch(err) {
+            this.setState({
+                inputValue: '',
+                imageUrl: err
+            })
+        }
     }
 
     render() {
