@@ -51,23 +51,28 @@ class SignIn extends React.Component{
         }
     }
 
-    onSubmit = (event) => {
+    onSubmit = async(event) => {
         event.preventDefault()
         if(!this.validEmail(this.state.email) || !this.validPassword(this.state.password))
             return false;
-        fetch('http://localhost:3030/signin', {
+        const request = {
             method: 'POST',
-            headers:{
+            headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(this.state)
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.status === "Success")
-                this.props.changePath(true)
-        })
-        .catch(err => console.log("Error: AI is taking over the world 🤖"))
+        }
+        try {
+            const response = await fetch('http://localhost:3030/signin', request)
+            const info = await response.json()
+            if(info.status === "Success")
+                this.updateGlobalState({
+                    signedIn: true,
+                    path: '/image',
+                    email: this.state.email,
+                    username: info.profile.username
+                })
+        } catch(err) {console.log("Error: AI is taking over the world 🤖")}
     }
 
     render(){
