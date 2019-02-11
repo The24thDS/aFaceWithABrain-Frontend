@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Input.module.css';
 
-const Input = ({ name, type, text, infos, status, onInputClick, onInputChange, verifyInput}) => {
+const Input = ({ name, type, text, infos, status, onClick, onChange, onBlur}) => {
     if(type!=="submit"){
         return (
             <span className={styles.label}>{text}
@@ -10,8 +10,8 @@ const Input = ({ name, type, text, infos, status, onInputClick, onInputChange, v
                 }
                 <div className={styles.inputContainer}>
                     <input 
-                        onBlur={verifyInput}
-                        onClick={onInputClick}
+                        onBlur={onBlur}
+                        onClick={onClick}
                         className={styles.input} 
                         name={name} type={type} 
                     />
@@ -26,7 +26,7 @@ const Input = ({ name, type, text, infos, status, onInputClick, onInputChange, v
                 name={name} 
                 type={type} 
                 value={text}
-                onClick={onInputClick}
+                onClick={onClick}
                 />
         )
     }

@@ -86,7 +86,10 @@ class Register extends React.Component{
             body: JSON.stringify(this.state)
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            if(data.status === "Success")
+                this.props.changePath("/signin")
+        })
         .catch(err => console.log("Error: AI is taking over the world 🤖"))
     }
 
@@ -94,23 +97,23 @@ class Register extends React.Component{
         return(
             <form className={styles.form}>
                 <Input 
-                verifyInput={this.verify} onInputClick={this.onClick} 
+                onBlur={this.verify} onClick={this.onClick} 
                 status={true}
                 infos={["at least 5 characters"]} 
                 name="username" type="text" text="Username" 
                 />
                 <Input 
-                verifyInput={this.verify} onInputClick={this.onClick} 
+                onBlur={this.verify} onClick={this.onClick} 
                 status={true}
                 name="email" type="text" text="Email" 
                 />
                 <Input 
-                verifyInput={this.verify} onInputClick={this.onClick} 
+                onBlur={this.verify} onClick={this.onClick} 
                 status={true}
                 infos={["at least 8 characters including","at least one lowercase, uppercase, number and symbol"]}
                 name="password" type="password" text="Password" 
                 />
-                <Input onInputClick={this.onSubmit} name="submit" type="submit" text="Sign Up" />
+                <Input onClick={this.onSubmit} name="submit" type="submit" text="Sign Up" />
             </form>
         )
     }
