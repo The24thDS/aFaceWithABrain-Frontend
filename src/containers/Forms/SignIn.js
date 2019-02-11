@@ -29,6 +29,11 @@ class SignIn extends React.Component{
         }
     }
 
+    onClick = (event) => {
+        event.target.classList.remove(styles.valid)
+        event.target.classList.remove(styles.invalid)
+    }
+
     onSubmit = async(event) => {
         event.preventDefault()
         const { email, password } = this.state
@@ -59,9 +64,20 @@ class SignIn extends React.Component{
         const password = new RegExp(/^(?=.*\d)(?=.*[.,<>?'"[\]{}`~!@#$%^&*()\-+_/\\])(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{8,35}$$/) // eg: testPassword.1
         return(
             <form className={`${styles.form} ${styles.login}`}>
-                <Input onBlur={event=>this.validate(event, email)} name="email" type="email" text="Email" required="true" />
-                <Input onBlur={event=>this.validate(event, password)} name="password" type="password" text="Password" required="true" />
-                <Input onClick={this.onSubmit} name="submit" type="submit" text="Log In"/>
+                <Input 
+                    onBlur={event=>this.validate(event, email)} 
+                    onClick={this.onClick}
+                    name="email" type="email" text="Email" required="true" 
+                />
+                <Input 
+                    onBlur={event=>this.validate(event, password)} 
+                    onClick={this.onClick}
+                    name="password" type="password" text="Password" required="true" 
+                />
+                <Input 
+                    onClick={this.onSubmit} 
+                    name="submit" type="submit" text="Log In"
+                />
             </form>
         )
     }
