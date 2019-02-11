@@ -12,8 +12,13 @@ class App extends Component {
     this.state = {
       signedIn: false,
       path: '/signin',
-      email: ''
+      email: '',
+      username: '',
     }
+  }
+
+  updateGlobalState = state => {
+    this.setState(state, ()=>{console.log(this.state)})
   }
 
   changePage = (path) => {
@@ -34,16 +39,16 @@ class App extends Component {
   
 
   render() {
-    const {signedIn, path} = this.state
+    const {signedIn, path, email, username} = this.state
     return (
       <div className="App">
         <Header signedIn={signedIn} path={path} changePage={this.changePage}/>
         <section>
           {
             signedIn?
-                <Image />
+                <Image email={email} username={username}/>
               : path==='/signin'?
-                  <SignIn changePath={this.changePage}/>
+                  <SignIn updateGlobalState={this.updateGlobalState}/>
                 :
                   <Register/>
           }

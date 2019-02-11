@@ -4,15 +4,13 @@ import ImageForm from '../../components/ImageForm/ImageForm'
 import Output from '../../components/Output/Output'
 
 class Image extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-            username: '',
-            email: '',
             inputValue: '',
             imageUrl: '',
             boxes: [],
-            entries: ''
+            entries: 0
         }
     }
 
