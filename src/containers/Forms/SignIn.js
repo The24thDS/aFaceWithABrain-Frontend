@@ -54,7 +54,7 @@ class SignIn extends React.Component{
                     signedIn: true,
                     path: '/image',
                     email: this.state.email,
-                    username: info.profile.username
+                    username: info.response.username
                 })
         } catch(err) {console.log(err)}
     }
