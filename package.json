@@ -1,6 +1,7 @@
 {
   "name": "afaccewithabrain",
   "version": "1.0.0",
+  "homepage": "https://the24thds.github.io/aFaceWithABrain-Frontend/",
   "private": true,
   "dependencies": {
     "clarifai": "^2.9.0",
