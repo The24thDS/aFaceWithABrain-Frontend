@@ -66,11 +66,29 @@ class Image extends React.Component {
         }
     }
 
+    async componentDidMount(){
+        const request = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: this.props.email
+            })
+        }
+        const response = await fetch('http://localhost:3030/entries', request)
+        const info = await response.json()
+        const {entries} = info.response
+        this.setState({
+            entries
+        })        
+    }
+
     render() {
-        const { inputValue, imageUrl, boxes } = this.state
+        const { inputValue, imageUrl, boxes, entries } = this.state
         return (
             <div style={{width: '100%'}}>
-                <Rank />
+                <Rank username={this.props.username} entries={entries}/>
                 <ImageForm 
                     value={inputValue} 
                     onInputChange={this.onInputChange} 
