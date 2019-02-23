@@ -72,7 +72,7 @@ class Image extends React.Component {
 
     async componentDidMount(){
         const request = {
-            method: 'GET',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
