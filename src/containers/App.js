@@ -20,7 +20,7 @@ class App extends Component {
   updateGlobalState = state => {
     this.setState(state)
   }
-
+// ! remove this method
   changePage = (path) => {
     if(path==='/signin')
       this.setState({
