@@ -4,7 +4,7 @@
   "homepage": "https://the24thds.github.io/aFaceWithABrain-Frontend/",
   "private": true,
   "dependencies": {
-    "clarifai": "^2.9.0",
+    "clarifai": "^2.9.1",
     "gh-pages": "^2.0.1",
     "particlesjs": "^2.2.3",
     "react": "^16.8.2",
